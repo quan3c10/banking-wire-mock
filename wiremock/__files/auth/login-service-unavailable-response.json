@@ -1,0 +1,5 @@
+{
+  "error": "SERVICE_UNAVAILABLE",
+  "message": "Authentication service is temporarily unavailable. Please try again later.",
+  "retryAfter": 30
+}

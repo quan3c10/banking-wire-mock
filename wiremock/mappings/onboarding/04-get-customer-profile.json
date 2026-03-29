@@ -1,0 +1,15 @@
+{
+  "name": "Onboarding - Get Customer Profile",
+  "priority": 5,
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/api/v1/customers/[a-zA-Z0-9_-]+"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "onboarding/customer-profile.json"
+  }
+}

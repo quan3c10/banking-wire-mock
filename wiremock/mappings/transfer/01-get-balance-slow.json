@@ -1,0 +1,16 @@
+{
+  "name": "Transfer - Get Account Balance (slow - core banking timeout simulation)",
+  "priority": 1,
+  "request": {
+    "method": "GET",
+    "url": "/api/v1/accounts/slow-account/balance"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "fixedDelayMilliseconds": 5000,
+    "bodyFileName": "transfer/balance-response.json"
+  }
+}

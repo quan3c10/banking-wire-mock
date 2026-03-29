@@ -1,0 +1,23 @@
+{
+  "name": "Auth - Login Success",
+  "priority": 1,
+  "request": {
+    "method": "POST",
+    "url": "/api/v1/auth/login",
+    "bodyPatterns": [
+      {
+        "matchesJsonPath": {
+          "expression": "$.username",
+          "equalTo": "john.doe"
+        }
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "auth/login-success-response.json"
+  }
+}

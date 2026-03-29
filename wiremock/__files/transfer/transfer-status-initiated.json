@@ -1,0 +1,7 @@
+{
+  "transferId": "{{request.pathSegments.[3]}}",
+  "status": "INITIATED",
+  "message": "Transfer has been initiated and is awaiting processing",
+  "createdAt": "2025-03-29T10:00:00Z",
+  "updatedAt": "{{now format='yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\''}}"
+}

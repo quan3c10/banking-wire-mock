@@ -1,0 +1,32 @@
+{
+  "customerId": "{{request.pathSegments.[3]}}",
+  "name": "John Doe",
+  "dateOfBirth": "1990-05-15",
+  "email": "john.doe@example.com",
+  "phone": "+1-555-0100",
+  "address": {
+    "street": "123 Main St",
+    "city": "Springfield",
+    "state": "IL",
+    "zipCode": "62704",
+    "country": "US"
+  },
+  "accounts": [
+    {
+      "accountId": "ACC-001",
+      "accountNumber": "1234567890",
+      "type": "CHECKING",
+      "currency": "USD",
+      "status": "ACTIVE"
+    },
+    {
+      "accountId": "ACC-002",
+      "accountNumber": "0987654321",
+      "type": "SAVINGS",
+      "currency": "USD",
+      "status": "ACTIVE"
+    }
+  ],
+  "status": "APPROVED",
+  "createdAt": "2025-01-15T10:30:00Z"
+}

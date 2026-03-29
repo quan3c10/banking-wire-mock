@@ -1,0 +1,23 @@
+{
+  "name": "Onboarding - Upload Document",
+  "request": {
+    "method": "POST",
+    "urlPathPattern": "/api/v1/customers/applications/[a-zA-Z0-9_-]+/documents",
+    "headers": {
+      "Content-Type": {
+        "contains": "application/json"
+      }
+    },
+    "bodyPatterns": [
+      { "matchesJsonPath": "$.documentType" },
+      { "matchesJsonPath": "$.documentData" }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "onboarding/document-uploaded-response.json"
+  }
+}

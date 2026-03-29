@@ -1,0 +1,6 @@
+{
+  "error": "TRANSFER_NOT_CANCELLABLE",
+  "message": "Transfer 'completed-transfer-001' is in COMPLETED state and cannot be cancelled",
+  "currentStatus": "COMPLETED",
+  "timestamp": "{{now format='yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\''}}"
+}

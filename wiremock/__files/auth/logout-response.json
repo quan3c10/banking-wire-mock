@@ -1,0 +1,4 @@
+{
+  "message": "Session invalidated successfully",
+  "loggedOutAt": "{{now format='yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\''}}"
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Auth - Get Current User (authorized)",
+  "priority": 1,
+  "request": {
+    "method": "GET",
+    "url": "/api/v1/auth/me",
+    "headers": {
+      "Authorization": {
+        "matches": "Bearer eyJ.+"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "auth/me-authorized-response.json"
+  }
+}

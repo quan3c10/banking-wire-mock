@@ -1,0 +1,23 @@
+{
+  "name": "Security - Missing Authorization Header (401)",
+  "priority": 2,
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/api/v1/accounts/[a-zA-Z0-9_-]+/balance",
+    "headers": {
+      "Authorization": {
+        "absent": true
+      }
+    }
+  },
+  "response": {
+    "status": 401,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "error": "UNAUTHORIZED",
+      "message": "Authorization header is required to access this resource"
+    }
+  }
+}

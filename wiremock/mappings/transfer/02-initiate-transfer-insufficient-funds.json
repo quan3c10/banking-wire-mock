@@ -1,0 +1,29 @@
+{
+  "name": "Transfer - Initiate Transfer (insufficient funds)",
+  "priority": 1,
+  "request": {
+    "method": "POST",
+    "url": "/api/v1/transfers",
+    "bodyPatterns": [
+      {
+        "matchesJsonPath": {
+          "expression": "$.fromAccount",
+          "equalTo": "ACC-001"
+        }
+      },
+      {
+        "matchesJsonPath": {
+          "expression": "$.amount",
+          "equalTo": 99999.99
+        }
+      }
+    ]
+  },
+  "response": {
+    "status": 422,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "transfer/transfer-insufficient-funds-response.json"
+  }
+}

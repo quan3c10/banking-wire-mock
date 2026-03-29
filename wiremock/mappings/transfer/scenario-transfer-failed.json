@@ -1,0 +1,17 @@
+{
+  "name": "Scenario - Transfer Failure: FAILED (terminal state)",
+  "priority": 1,
+  "scenarioName": "Transfer Failure",
+  "requiredScenarioState": "FAILED",
+  "request": {
+    "method": "GET",
+    "url": "/api/v1/transfers/failed-tf-001"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "transfer/transfer-status-failed.json"
+  }
+}

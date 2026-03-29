@@ -1,0 +1,6 @@
+{
+  "applicationId": "{{request.pathSegments.[4]}}",
+  "status": "PENDING",
+  "message": "Your application is pending initial review",
+  "updatedAt": "{{now format='yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\''}}"
+}

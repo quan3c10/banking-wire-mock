@@ -1,0 +1,15 @@
+{
+  "name": "Transfer - Cancel Transfer (success)",
+  "priority": 5,
+  "request": {
+    "method": "POST",
+    "urlPathPattern": "/api/v1/transfers/[a-zA-Z0-9_-]+/cancel"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "transfer/transfer-cancelled-response.json"
+  }
+}

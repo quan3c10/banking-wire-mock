@@ -1,0 +1,19 @@
+{
+  "name": "Transfer - Initiate Transfer (payment gateway fault simulation)",
+  "priority": 1,
+  "request": {
+    "method": "POST",
+    "url": "/api/v1/transfers",
+    "bodyPatterns": [
+      {
+        "matchesJsonPath": {
+          "expression": "$.fromAccount",
+          "equalTo": "ACC-FAULT"
+        }
+      }
+    ]
+  },
+  "response": {
+    "fault": "MALFORMED_RESPONSE_CHUNK"
+  }
+}

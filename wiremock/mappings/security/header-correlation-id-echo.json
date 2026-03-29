@@ -1,0 +1,26 @@
+{
+  "name": "Security - Correlation ID Echo (X-Request-ID / X-Correlation-ID)",
+  "priority": 10,
+  "request": {
+    "method": "GET",
+    "url": "/api/v1/ping",
+    "headers": {
+      "X-Request-ID": {
+        "matches": ".+"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json",
+      "X-Request-ID": "{{request.headers.X-Request-ID}}",
+      "X-Correlation-ID": "{{request.headers.X-Correlation-ID}}"
+    },
+    "jsonBody": {
+      "message": "pong",
+      "requestId": "{{request.headers.X-Request-ID}}",
+      "correlationId": "{{request.headers.X-Correlation-ID}}"
+    }
+  }
+}

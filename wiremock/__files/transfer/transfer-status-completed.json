@@ -1,0 +1,7 @@
+{
+  "transferId": "{{request.pathSegments.[3]}}",
+  "status": "COMPLETED",
+  "message": "Transfer has been completed successfully",
+  "createdAt": "2025-03-29T10:00:00Z",
+  "completedAt": "{{now format='yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\''}}"
+}

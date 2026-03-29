@@ -1,0 +1,8 @@
+{
+  "transferId": "{{request.pathSegments.[3]}}",
+  "status": "FAILED",
+  "errorCode": "PAYMENT_NETWORK_ERROR",
+  "message": "Transfer failed due to a payment network error. Funds have not been debited.",
+  "createdAt": "2025-03-29T10:00:00Z",
+  "failedAt": "{{now format='yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\''}}"
+}

@@ -1,0 +1,6 @@
+{
+  "applicationId": "{{request.pathSegments.[4]}}",
+  "status": "UNDER_REVIEW",
+  "message": "Your application is currently being reviewed by our compliance team",
+  "updatedAt": "{{now format='yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\''}}"
+}

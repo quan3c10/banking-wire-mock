@@ -1,0 +1,11 @@
+{
+  "transferId": "{{randomValue type='UUID'}}",
+  "status": "INITIATED",
+  "fromAccount": "{{jsonPath request.body '$.fromAccount'}}",
+  "toAccount": "{{jsonPath request.body '$.toAccount'}}",
+  "amount": {{jsonPath request.body '$.amount'}},
+  "currency": "{{jsonPath request.body '$.currency'}}",
+  "reference": "{{jsonPath request.body '$.reference'}}",
+  "message": "Transfer initiated successfully",
+  "createdAt": "{{now format='yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\''}}"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Transfer - Initiate Transfer (invalid account)",
+  "priority": 2,
+  "request": {
+    "method": "POST",
+    "url": "/api/v1/transfers",
+    "bodyPatterns": [
+      {
+        "matchesJsonPath": {
+          "expression": "$.fromAccount",
+          "equalTo": "ACC-INVALID"
+        }
+      }
+    ]
+  },
+  "response": {
+    "status": 404,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "transfer/transfer-account-not-found-response.json"
+  }
+}

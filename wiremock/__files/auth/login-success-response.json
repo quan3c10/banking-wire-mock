@@ -1,0 +1,11 @@
+{
+  "accessToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyLTAwMSIsIm5hbWUiOiJKb2huIERvZSIsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTcwMDAwMDAwMCwiZXhwIjoxNzAwMDAzNjAwfQ.mock-signature",
+  "refreshToken": "rt_mock_refresh_token_abc123",
+  "tokenType": "Bearer",
+  "expiresIn": 3600,
+  "user": {
+    "userId": "user-001",
+    "username": "john.doe",
+    "role": "CUSTOMER"
+  }
+}

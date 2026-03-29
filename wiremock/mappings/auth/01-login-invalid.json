@@ -1,0 +1,15 @@
+{
+  "name": "Auth - Login Invalid Credentials (fallback)",
+  "priority": 5,
+  "request": {
+    "method": "POST",
+    "url": "/api/v1/auth/login"
+  },
+  "response": {
+    "status": 401,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "auth/login-invalid-response.json"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Transfer - Get Account Balance",
+  "priority": 5,
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/api/v1/accounts/[a-zA-Z0-9_-]+/balance"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "transfer/balance-response.json"
+  }
+}

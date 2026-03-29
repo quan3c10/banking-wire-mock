@@ -1,0 +1,25 @@
+{
+  "name": "Onboarding - Submit KYC",
+  "request": {
+    "method": "POST",
+    "url": "/api/v1/customers",
+    "headers": {
+      "Content-Type": {
+        "contains": "application/json"
+      }
+    },
+    "bodyPatterns": [
+      { "matchesJsonPath": "$.name" },
+      { "matchesJsonPath": "$.dateOfBirth" },
+      { "matchesJsonPath": "$.idNumber" },
+      { "matchesJsonPath": "$.address" }
+    ]
+  },
+  "response": {
+    "status": 202,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "onboarding/kyc-accepted-response.json"
+  }
+}

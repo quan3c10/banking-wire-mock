@@ -1,0 +1,17 @@
+{
+  "name": "Scenario - Transfer Lifecycle: COMPLETED (terminal state)",
+  "priority": 1,
+  "scenarioName": "Transfer Lifecycle",
+  "requiredScenarioState": "COMPLETED",
+  "request": {
+    "method": "GET",
+    "url": "/api/v1/transfers/lifecycle-tf-001"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "transfer/transfer-status-completed.json"
+  }
+}

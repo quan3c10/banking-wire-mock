@@ -1,0 +1,17 @@
+{
+  "name": "Scenario - Onboarding Lifecycle: APPROVED (terminal state)",
+  "priority": 1,
+  "scenarioName": "Onboarding Lifecycle",
+  "requiredScenarioState": "APPROVED",
+  "request": {
+    "method": "GET",
+    "url": "/api/v1/customers/applications/onb-app-001"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "onboarding/application-status-approved.json"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "error": "INVALID_CREDENTIALS",
+  "message": "The username or password provided is incorrect",
+  "timestamp": "{{now format='yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\''}}"
+}

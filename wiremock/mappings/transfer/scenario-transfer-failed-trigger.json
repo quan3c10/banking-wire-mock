@@ -1,0 +1,18 @@
+{
+  "name": "Scenario - Transfer Failure: INITIATED then FAILED (state 1 of 2)",
+  "priority": 1,
+  "scenarioName": "Transfer Failure",
+  "requiredScenarioState": "Started",
+  "newScenarioState": "FAILED",
+  "request": {
+    "method": "GET",
+    "url": "/api/v1/transfers/failed-tf-001"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "transfer/transfer-status-initiated.json"
+  }
+}

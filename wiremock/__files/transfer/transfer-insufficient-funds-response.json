@@ -1,0 +1,8 @@
+{
+  "error": "INSUFFICIENT_FUNDS",
+  "message": "Account has insufficient funds for this transfer",
+  "availableBalance": 14500.00,
+  "requestedAmount": {{jsonPath request.body '$.amount'}},
+  "currency": "USD",
+  "timestamp": "{{now format='yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\''}}"
+}

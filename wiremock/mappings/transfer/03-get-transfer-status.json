@@ -1,0 +1,15 @@
+{
+  "name": "Transfer - Get Transfer Status (default, non-scenario)",
+  "priority": 8,
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/api/v1/transfers/[a-zA-Z0-9_-]+"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "transfer/transfer-status-initiated.json"
+  }
+}

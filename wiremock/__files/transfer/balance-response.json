@@ -1,0 +1,8 @@
+{
+  "accountId": "{{request.pathSegments.[3]}}",
+  "accountNumber": "1234567890",
+  "balance": 15000.00,
+  "availableBalance": 14500.00,
+  "currency": "USD",
+  "asOf": "{{now format='yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\''}}"
+}

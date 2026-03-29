@@ -1,0 +1,15 @@
+{
+  "name": "Auth - Get Current User (unauthorized fallback)",
+  "priority": 5,
+  "request": {
+    "method": "GET",
+    "url": "/api/v1/auth/me"
+  },
+  "response": {
+    "status": 401,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "auth/me-unauthorized-response.json"
+  }
+}

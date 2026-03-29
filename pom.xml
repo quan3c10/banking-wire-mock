@@ -54,12 +54,11 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Jackson for JSON assertions -->
+        <!-- Jackson for JSON serialization (compile scope: used by BankingApiClient) -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
-            <scope>test</scope>
         </dependency>
 
         <!-- Awaitility for polling assertions in scenario tests -->
@@ -67,6 +66,14 @@
             <groupId>org.awaitility</groupId>
             <artifactId>awaitility</artifactId>
             <version>4.2.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- AssertJ for fluent assertions in Paradigm 2 client tests -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.25.3</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -82,9 +89,10 @@
                         <wiremock.host>${wiremock.host}</wiremock.host>
                         <wiremock.port>${wiremock.port}</wiremock.port>
                     </systemPropertyVariables>
-                    <!-- Exclude embedded test from integration run (no Docker needed) -->
+                    <!-- Exclude no-Docker tests from integration run (require Docker WireMock) -->
                     <excludes>
                         <exclude>**/EmbeddedWireMockTest.java</exclude>
+                        <exclude>**/banking/BankingApiClientTest.java</exclude>
                     </excludes>
                 </configuration>
             </plugin>
@@ -107,6 +115,7 @@
                         <configuration>
                             <includes>
                                 <include>**/EmbeddedWireMockTest.java</include>
+                                <include>**/banking/BankingApiClientTest.java</include>
                             </includes>
                             <excludes/>
                         </configuration>

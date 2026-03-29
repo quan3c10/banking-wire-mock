@@ -1,6 +1,17 @@
 # WireMock Banking API POC
 
-A proof-of-concept demonstrating [WireMock](https://wiremock.org/) for API automation testing, focused on three core banking flows: **Customer Onboarding**, **Authentication**, and **Fund Transfer**.
+A proof-of-concept demonstrating [WireMock](https://wiremock.org/) for API automation testing across two paradigms, focused on three core banking flows: **Customer Onboarding**, **Authentication**, and **Fund Transfer**.
+
+## Two Paradigms
+
+| | Paradigm 1 | Paradigm 2 |
+|---|---|---|
+| **What is WireMock?** | The system under test (mock server) | A test double for a real HTTP client |
+| **What is tested?** | That WireMock stubs return the right responses | That `BankingApiClient` sends correct requests and handles responses |
+| **Test runner** | REST Assured fires requests at WireMock (Docker) | WireMock runs embedded in JVM; tests drive the real client code |
+| **Docker required?** | Yes | No |
+| **Where to look** | `src/test/java/com/example/wiremock/` | `src/test/java/com/example/banking/` |
+| **Key benefit** | Validates stub contract definitions | Validates client contract compliance (consumer-driven) |
 
 ## Quick Start
 
@@ -28,6 +39,8 @@ mvn test
 
 ## Features Demonstrated
 
+### Paradigm 1 — WireMock as Mock Server
+
 | Feature | Where to look |
 |---------|---------------|
 | Basic request/response stubs | `wiremock/mappings/` |
@@ -43,12 +56,23 @@ mvn test
 | Stub priority / fallback | Auth login stubs (priority 1 vs 5) |
 | Embedded WireMock (no Docker) | `EmbeddedWireMockTest.java` |
 
+### Paradigm 2 — WireMock as Automation Test Suite (Consumer-Driven Contract Testing)
+
+| Feature | Where to look |
+|---------|---------------|
+| Embedded WireMock (`@RegisterExtension`) | `BankingApiClientTest.java` |
+| Verifying request headers (`Authorization: Bearer`) | `getBalance_validToken_*` test |
+| Verifying request body fields (`matchingJsonPath`) | `initiateTransfer_validRequest_*` test |
+| Exception handling for 401 / 422 / 404 | All `*_throwsBankingApiException` tests |
+| Fault injection (`CONNECTION_RESET_BY_PEER`) | `initiateTransfer_serverDown_*` test |
+| Real Java HTTP client as SUT (`java.net.http.HttpClient`) | `BankingApiClient.java` |
+
 ## Project Structure
 
 ```
 .
 ├── docker-compose.yml              # WireMock Standalone 3.x container
-├── pom.xml                         # Maven project (Java 17, JUnit 5, REST Assured)
+├── pom.xml                         # Maven project (Java 17, JUnit 5, REST Assured, AssertJ)
 ├── scripts/
 │   ├── start.sh                    # Start WireMock and wait for health
 │   ├── stop.sh                     # Stop WireMock
@@ -63,16 +87,26 @@ mvn test
 │       ├── onboarding/             # Response body templates
 │       ├── auth/                   # Response body templates
 │       └── transfer/               # Response body templates
-└── src/test/java/com/example/wiremock/
-    ├── BaseWireMockTest.java        # Shared config + scenario reset
-    ├── CustomerOnboardingTest.java  # Onboarding flow tests
-    ├── AuthenticationTest.java      # Auth flow tests
-    ├── FundTransferTest.java        # Transfer flow tests
-    ├── TransferLifecycleScenarioTest.java  # Transfer state machine tests
-    ├── OnboardingLifecycleScenarioTest.java # Onboarding state machine tests
-    ├── BankingFaultSimulationTest.java      # Fault injection tests
-    ├── SecurityHeadersTest.java     # Header matching tests
-    └── EmbeddedWireMockTest.java    # Programmatic (no Docker) tests
+├── src/main/java/com/example/banking/   # Paradigm 2: real client (SUT)
+│   ├── BankingApiClient.java       # HTTP client wrapping login, getBalance, initiateTransfer
+│   ├── BankingApiException.java    # Typed exception (statusCode + errorCode)
+│   ├── LoginResponse.java          # JWT login response record
+│   ├── BalanceResponse.java        # Account balance record
+│   ├── TransferRequest.java        # Transfer request payload record
+│   └── TransferResponse.java       # Transfer response record
+└── src/test/java/com/example/
+    ├── wiremock/                    # Paradigm 1: REST Assured → Docker WireMock
+    │   ├── BaseWireMockTest.java        # Shared config + scenario reset
+    │   ├── CustomerOnboardingTest.java  # Onboarding flow tests
+    │   ├── AuthenticationTest.java      # Auth flow tests
+    │   ├── FundTransferTest.java        # Transfer flow tests
+    │   ├── TransferLifecycleScenarioTest.java  # Transfer state machine tests
+    │   ├── OnboardingLifecycleScenarioTest.java # Onboarding state machine tests
+    │   ├── BankingFaultSimulationTest.java      # Fault injection tests
+    │   ├── SecurityHeadersTest.java     # Header matching tests
+    │   └── EmbeddedWireMockTest.java    # Programmatic (no Docker) tests
+    └── banking/                     # Paradigm 2: client tests → embedded WireMock
+        └── BankingApiClientTest.java    # Consumer-driven contract tests for BankingApiClient
 ```
 
 ## Banking API Flows
@@ -112,21 +146,23 @@ POST   /api/v1/transfers/{transferId}/cancel                # Cancel
 ## Test Execution
 
 ```bash
-# Integration tests (requires WireMock running)
+# Paradigm 1: integration tests (requires Docker WireMock running)
 mvn test
 
-# Embedded tests only (no Docker needed)
+# Paradigm 2: client tests only (no Docker needed — embedded WireMock)
 mvn test -Pembedded
 
-# All tests including embedded
+# All tests: Paradigm 1 integration + Paradigm 2 client tests
 mvn test -Pall-tests
 
 # Skip fault tests (slow / connection-drop)
 mvn test -Dgroups='!fault'
 
-# Custom WireMock host/port
+# Custom WireMock host/port (Paradigm 1 only)
 mvn test -Dwiremock.host=192.168.1.100 -Dwiremock.port=9090
 ```
+
+> **Note:** `BankingApiClientTest` (Paradigm 2) is excluded from the default `mvn test` run because it uses an embedded WireMock and does not require Docker. It is included in the `embedded` and `all-tests` Maven profiles.
 
 ## Stub Trigger Values
 

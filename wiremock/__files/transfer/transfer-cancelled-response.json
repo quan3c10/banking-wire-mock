@@ -2,5 +2,5 @@
   "transferId": "{{request.pathSegments.[3]}}",
   "status": "CANCELLED",
   "message": "Transfer has been cancelled successfully",
-  "cancelledAt": "{{now format='yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\''}}"
+  "cancelledAt": "{{now format='yyyy-MM-dd HH:mm:ss'}}"
 }

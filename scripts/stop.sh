@@ -7,5 +7,5 @@ PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 cd "$PROJECT_DIR"
 
 echo "Stopping WireMock Banking POC..."
-docker-compose down
+docker compose down
 echo "Done."

@@ -7,7 +7,7 @@ PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 cd "$PROJECT_DIR"
 
 echo "Starting WireMock Banking POC..."
-docker-compose up -d
+docker compose up -d
 
 echo "Waiting for WireMock to be ready..."
 for i in $(seq 1 30); do
@@ -20,5 +20,5 @@ for i in $(seq 1 30); do
 done
 
 echo "ERROR: WireMock did not become ready in 30 seconds"
-docker-compose logs wiremock
+docker compose logs wiremock
 exit 1

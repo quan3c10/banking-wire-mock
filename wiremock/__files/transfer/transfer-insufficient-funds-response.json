@@ -4,5 +4,5 @@
   "availableBalance": 14500.00,
   "requestedAmount": {{jsonPath request.body '$.amount'}},
   "currency": "USD",
-  "timestamp": "{{now format='yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\''}}"
+  "timestamp": "{{now format='yyyy-MM-dd HH:mm:ss'}}"
 }

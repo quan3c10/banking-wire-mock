@@ -2,5 +2,5 @@
   "applicationId": "{{request.pathSegments.[4]}}",
   "status": "REJECTED",
   "message": "We were unable to verify your identity. Please contact support.",
-  "updatedAt": "{{now format='yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\''}}"
+  "updatedAt": "{{now format='yyyy-MM-dd HH:mm:ss'}}"
 }

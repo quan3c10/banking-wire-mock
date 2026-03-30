@@ -3,5 +3,5 @@
   "applicationId": "{{request.pathSegments.[4]}}",
   "status": "RECEIVED",
   "message": "Document received and queued for verification",
-  "uploadedAt": "{{now format='yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\''}}"
+  "uploadedAt": "{{now format='yyyy-MM-dd HH:mm:ss'}}"
 }

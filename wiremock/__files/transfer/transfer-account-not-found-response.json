@@ -1,5 +1,5 @@
 {
   "error": "ACCOUNT_NOT_FOUND",
   "message": "Account '{{jsonPath request.body '$.fromAccount'}}' does not exist or is not accessible",
-  "timestamp": "{{now format='yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\''}}"
+  "timestamp": "{{now format='yyyy-MM-dd HH:mm:ss'}}"
 }

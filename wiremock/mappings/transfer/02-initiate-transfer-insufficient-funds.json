@@ -1,21 +1,12 @@
 {
   "name": "Transfer - Initiate Transfer (insufficient funds)",
-  "priority": 1,
+  "priority": 0,
   "request": {
     "method": "POST",
     "url": "/api/v1/transfers",
     "bodyPatterns": [
       {
-        "matchesJsonPath": {
-          "expression": "$.fromAccount",
-          "equalTo": "ACC-001"
-        }
-      },
-      {
-        "matchesJsonPath": {
-          "expression": "$.amount",
-          "equalTo": 99999.99
-        }
+        "matchesJsonPath": "$[?(@.fromAccount == 'ACC-001' && @.amount == 99999.99)]"
       }
     ]
   },

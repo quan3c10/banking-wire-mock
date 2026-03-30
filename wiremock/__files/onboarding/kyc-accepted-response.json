@@ -2,5 +2,5 @@
   "applicationId": "{{randomValue type='UUID'}}",
   "status": "PENDING",
   "message": "KYC application submitted successfully",
-  "submittedAt": "{{now format='yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\''}}"
+  "submittedAt": "{{now format='yyyy-MM-dd HH:mm:ss'}}"
 }

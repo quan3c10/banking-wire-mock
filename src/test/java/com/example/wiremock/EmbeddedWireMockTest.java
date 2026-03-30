@@ -15,6 +15,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
 
 /**
  * Demonstrates using WireMock as an embedded JUnit 5 extension.
@@ -41,7 +42,7 @@ class EmbeddedWireMockTest {
     void loginStubDefinedProgrammatically() {
         wireMock.stubFor(
             post(urlEqualTo("/api/v1/auth/login"))
-                .withRequestBody(matchingJsonPath("$.username", equalTo("embedded.user")))
+                .withRequestBody(matchingJsonPath("$.username", WireMock.equalTo("embedded.user")))
                 .willReturn(aResponse()
                     .withStatus(200)
                     .withHeader("Content-Type", "application/json")
@@ -125,7 +126,7 @@ class EmbeddedWireMockTest {
 
         // Verify the request was received exactly once
         wireMock.verify(1, postRequestedFor(urlEqualTo("/api/v1/transfers"))
-            .withRequestBody(matchingJsonPath("$.fromAccount", equalTo("ACC-001"))));
+            .withRequestBody(matchingJsonPath("$.fromAccount", WireMock.equalTo("ACC-001"))));
     }
 
     @Test

@@ -3,5 +3,5 @@
   "status": "APPROVED",
   "customerId": "cust-001",
   "message": "Your application has been approved. Welcome to the bank!",
-  "updatedAt": "{{now format='yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\''}}"
+  "updatedAt": "{{now format='yyyy-MM-dd HH:mm:ss'}}"
 }
